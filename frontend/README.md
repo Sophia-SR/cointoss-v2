@@ -1,46 +1,97 @@
-# Getting Started with Create React App
+# CoinToss v2
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+CoinToss v2 is a financial management web application that helps users manage their savings goals, track transactions, and gain insights into their spending habits. This project utilizes React with TypeScript for the frontend and Node.js with Express for the backend. Tailwind CSS is used for styling, and Chart.js is integrated for data visualization.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **User Authentication**: Login and registration functionality.
+- **Savings Goals**: Create and track savings goals.
+- **Transactions**: Track income and expense transactions.
+- **Insights**: Visualize financial data with charts.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project Setup
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+- Node.js (v12 or higher)
+- npm or yarn
+- A PostgreSQL database (if using the full backend functionality)
+- A Teller API account (if integrating with Teller API)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend Setup
 
-### `npm run build`
+1. **Install dependencies:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   bash npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2.  bash npm start
+    
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Backend Setup
 
-### `npm run eject`
+1.  bash cd backendnpm install
+    
+2.  Create a **.env** file in the **backend** directory and add the following environment variables:envCopy codeJWT\_SECRET=your\_jwt\_secretDATABASE\_URL=your\_database\_urlTELLER\_API\_KEY=your\_teller\_api\_key
+    
+3.  bash npm start
+    
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Issues and Workarounds
+----------------------
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Issues Faced
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1.  **Integration with Teller API**:
+    
+    *   The initial setup for integrating the Teller API was challenging due to authentication and token handling issues.
+        
+    *   I encountered errors related to environment variables and API key configuration.
+  
+    *   Due to time constraints, troubleshooting and debugging this issue to solution wasn't possible. 
+        
+2.  **Backend Endpoints**:
+    
+    *   The backend endpoints for fetching savings goals, transactions, and insights were not fully functional.
+        
+    *   There were issues with CORS configuration and data fetching from the backend.
+  
+    *   Again, time constraints were an issue here - with more time I'm confident this would be a fully functional feature. 
+        
+3.  **Date Handling in Transactions**:
+    
+    *   TypeScript type errors occurred due to the mismatch between **Date** objects and string types expected in the **Transaction** type.
+        
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Workarounds Implemented
 
-## Learn More
+1.  **Dummy Data for Frontend Components**:
+    
+    *   To demonstrate the functionality without fully operational backend endpoints, dummy data was used in the **SavingsGoals**, **Transactions**, and **Insights** components.
+        
+    *   This approach ensured that the application could still display meaningful and visually appealing information.
+        
+2.  **Environment Variable Configuration**:
+    
+    *   Environment variables were configured correctly to handle the Teller API integration, ensuring secure handling of API keys and tokens.
+        
+3.  **TypeScript Type Adjustments**:
+    
+    *   Adjusted the **Transaction** type to use strings for dates and converted **Date** objects to strings when creating dummy data. This resolved TypeScript type errors and ensured data consistency.
+        
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Example of Dummy Data Integration
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Here is an example of how dummy data was integrated into the **Insights** component to visualize financial data:
+
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   const [transactions, setTransactions] = useState([    { id: 1, description: 'Groceries', amount: -50, date: new Date('2023-01-01').toISOString(), type: 'expense', category: 'Food' },    { id: 2, description: 'Salary', amount: 1500, date: new Date('2023-01-02').toISOString(), type: 'income' },    // Additional dummy data...  ]);   `
+
+Future Improvements
+-------------------
+
+*   **Backend Endpoint Development**: Complete the implementation of backend endpoints for savings goals, transactions, and insights.
+    
+*   **Teller API Integration**: Fully integrate the Teller API for real-time financial data.
+    
+*   **Enhanced Error Handling**: Improve error handling and user feedback across the application.
